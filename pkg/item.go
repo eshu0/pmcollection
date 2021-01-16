@@ -1,26 +1,11 @@
 package pmcollection
 
-type Collection struct {
-	Info Info `json:"info"`
-
-	Item []Item `json:"item"`
-}
-
-type Info struct {
-	Name string `json:"name"`
-
-	Postman_Id string `json:"_postman_id"`
-
-	//"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	Schema string `json:"schema"`
-}
-
 type Item struct {
 	Name string `json:"name"`
 
-	Item []Item `json:"item"`
+	Item []Item `json:"item,omitempty"`
 
-	ProtocolProfileBehavior ProtocolProfileBehavior `json:"protocolProfileBehavior"`
+	ProtocolProfileBehavior ProtocolProfileBehavior `json:"protocolProfileBehavior,omitempty"`
 }
 
 type FolderItem struct {
@@ -30,50 +15,50 @@ type FolderItem struct {
 type RequestItem struct {
 	Item
 
-	Request Request `json:"request"`
+	Request Request `json:"request,omitempty"`
 
-	Response Response `json:"response"`
+	Response Response `json:"response,omitempty"`
 }
 
 type Response struct {
 }
 
 type Request struct {
-	Method string `json:"method"`
+	Method string `json:"method,omitempty"`
 
-	Body Body `json:"body"`
+	Body *Body `json:"body,omitempty"`
 
-	Url Url `json:"url"`
+	Url *Url `json:"url,omitempty"`
 }
 
 type Url struct {
-	Raw string `json:"raw"`
+	Raw string `json:"raw,omitempty"`
 
-	Protocol string `json:"protocol"`
+	Protocol string `json:"protocol,omitempty"`
 
-	Port string `json:"port"`
+	Port string `json:"port,omitempty"`
 
-	Host []string `json:"host"`
+	Host []string `json:"host,omitempty"`
 
-	Path []string `json:"path"`
+	Path []string `json:"path,omitempty"`
 }
 
 type Body struct {
-	Mode string `json:"mode"`
+	Mode string `json:"mode,omitempty"`
 
-	Raw string `json:"raw"`
+	Raw string `json:"raw,omitempty"`
 
-	Options Options `json:"options"`
+	Options Options `json:"options,omitempty"`
 }
 
 type Options struct {
-	Raw RawOption `json:"raw"`
+	Raw *RawOption `json:"raw,omitempty"`
 }
 
 type RawOption struct {
-	Language string `json:"language"`
+	Language string `json:"language,omitempty"`
 }
 
 type ProtocolProfileBehavior struct {
-	DisableBodyPruning bool `json:"disableBodyPruning"`
+	DisableBodyPruning bool `json:"disableBodyPruning,omitempty"`
 }
