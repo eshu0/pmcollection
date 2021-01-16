@@ -59,19 +59,26 @@ func (rsc *Collection) Load(ConfigFilePath string, Log slinterfaces.ISimpleLogge
 			return nil, false
 		}
 
-		rserverconfig := Collection{}
+		rserverconfig := &Collection{}
 
-		err2 := json.Unmarshal(bytes, &rserverconfig)
+		err2 := json.Unmarshal(bytes, rserverconfig)
 
 		if err2 != nil {
 			Log.LogErrorf("LoadFile()", " Loading %s failed with %s ", ConfigFilePath, err2.Error())
 			return nil, false
 		}
 
-		Log.LogDebugf("LoadFile()", "Read Port %s ", rserverconfig.Port)
+		if rserverconfig != nil && rserverconfig.Info != nil {
+			Log.LogDebugf("LoadFile()", "Read %v ", rserverconfig)
+
+			Log.LogDebugf("LoadFile()", "Read %s ", rserverconfig.Info.Name)
+		} else {
+			Log.LogDebugf("LoadFile()", "Read %v ", rserverconfig)
+		}
+
 		//rs.Log.LogDebugf("LoadFile()", "Port in config %s ", rs.Config.Port)
 
-		return &rserverconfig, true
+		return rserverconfig, true
 	} else {
 
 		if err != nil {
