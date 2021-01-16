@@ -7,12 +7,26 @@ type Item struct {
 
 	ProtocolProfileBehavior ProtocolProfileBehavior `json:"protocolProfileBehavior,omitempty"`
 
+	Event []*Event `json:"event,omitempty"`
+
 	Request *Request `json:"request,omitempty"`
 
 	Response []*Response `json:"response,omitempty"`
 }
 
 type Response struct {
+}
+
+type Event struct {
+	Listen string `json:"listen,omitempty"`
+
+	Script *Script `json:"script,omitempty"`
+}
+
+type Script struct {
+	Exec []string `json:"exec,omitempty"`
+
+	Type string `json:"type,omitempty"`
 }
 
 type Request struct {
