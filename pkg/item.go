@@ -1,23 +1,15 @@
 package pmcollection
 
 type Item struct {
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 
-	Item []Item `json:"item,omitempty"`
+	Item []*Item `json:"item,omitempty"`
 
 	ProtocolProfileBehavior ProtocolProfileBehavior `json:"protocolProfileBehavior,omitempty"`
-}
 
-type FolderItem struct {
-	Item
-}
+	Request *Request `json:"request,omitempty"`
 
-type RequestItem struct {
-	Item
-
-	Request Request `json:"request,omitempty"`
-
-	Response Response `json:"response,omitempty"`
+	Response []*Response `json:"response,omitempty"`
 }
 
 type Response struct {
@@ -48,7 +40,7 @@ type Body struct {
 
 	Raw string `json:"raw,omitempty"`
 
-	Options Options `json:"options,omitempty"`
+	Options *Options `json:"options,omitempty"`
 }
 
 type Options struct {
