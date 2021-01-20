@@ -34,7 +34,17 @@ type Request struct {
 
 	Body *Body `json:"body,omitempty"`
 
+	Header []*Header `json:"header,omitempty"`
+
 	Url *Url `json:"url,omitempty"`
+}
+
+type Header struct {
+	Key string `json:"key,omitempty"`
+
+	Value string `json:"value,omitempty"`
+
+	Type string `json:"type,omitempty"`
 }
 
 type Url struct {
