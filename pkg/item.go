@@ -37,6 +37,8 @@ type Request struct {
 	Header []*Header `json:"header,omitempty"`
 
 	Url *Url `json:"url,omitempty"`
+
+	Description string `json:"description,omitempty"`
 }
 
 type Header struct {
@@ -45,6 +47,8 @@ type Header struct {
 	Value string `json:"value,omitempty"`
 
 	Type string `json:"type,omitempty"`
+
+	Disabled bool `json:"disabled,omitempty"`
 }
 
 type Url struct {
